@@ -187,17 +187,70 @@ footer {
  text-align: center;
 }
 
-.curtain {
+#curtain {
  position: fixed;
  left:0; right: 0; bottom: 0; top: 0;
  width: 100vw;
  height: 100vh;
  background: #030303;
- animation: fadeOut 1.8s both;
- pointer-events: none;
+ user-select: none;
+ opacity: 1;
+ transition: opacity 1.8s .5s;
+ text-align: center;
+ font-family: 'Helvetica', 'Arial', sans-serif;
+ font-weight: 200;
 }
-@keyframes fadeOut {
- to { background: transparent; }
+#curtain.hidden {
+ pointer-events: none;
+ opacity: 0;
+}
+@supports (filter: opacity(0)){
+ #curtain {
+  filter: opacity(1);
+  transition: filter 1.8s .5s;
+ }
+ #curtain.hidden {
+  filter: opacity(0);
+  opacity: 1;
+ }
+}
+#curtain figure {
+ position: absolute;
+ left:0; right: 0; top: 0; bottom: 0; margin: auto;
+ width: 50vw; max-width: 300px;
+ height: 50vh;
+ filter: opacity(0);
+ animation: appear .5s .3s both;
+}
+@keyframes appear {
+ to { filter: opacity(1); }
+}
+#curtain.hidden figure {
+ display: none; /* no transition */
+}
+#curtain #shape {
+ margin: auto;
+ width: 50px;
+ height: 50px;
+ background: #fff;
+ border-radius: 50px;
+ animation: load 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) .3s infinite alternate;
+}
+@keyframes load {
+ 0% {
+  transform: scale(1);
+  filter: opacity(.5);
+ }
+ 100% {
+  transform: scale(1.3);
+  filter: opacity(1);
+ }
+}
+#curtain figcaption {
+ margin-top: 100px;
+}
+#curtain figcaption::after {
+ content: "loading..."; /* seo */
 }
 </style>
 
@@ -242,7 +295,7 @@ window.addEventListener('scroll', controlNavbar);
 
 // smooth scroll
 var scroll = new SmoothScroll('a[href*="#"]', {
-  header: '#nav', speed: 100
+  header: '#nav', speed: 200
 });
 </script>
 
@@ -308,4 +361,17 @@ var scroll = new SmoothScroll('a[href*="#"]', {
 </footer>
 
 
-<div class="curtain"></div>
+<div id="curtain">
+ <figure>
+  <div id="shape"></div><figcaption></figcaption>
+ </figure>
+</div>
+<script>
+/* splash effect */
+var d = document.getElementById("curtain");
+var t = setTimeout(function(){d.classList.add("hidden")},6000); /* load time max = 6s */
+window.addEventListener("load",function(){
+ clearTimeout(t);
+ d.classList.add("hidden");
+ setTimeout(function(){d.style.display = "none"}, 4000);
+})</script>
