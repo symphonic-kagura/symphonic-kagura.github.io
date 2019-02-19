@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0">
+<title>《連作交響神樂》</title>
+<script src="smooth-scroll.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+<style>
+
+@font-face {
+ font-family: 'GenRyuMin';
+ src: url(GenRyuMinSB-Subset.woff2) format('woff2'), url(GenRyuMinSB-Subset.woff) format('woff');
+ font-display: swap;
+}
+
+* {
+ box-sizing: border-box;
+}
+html {
+ scroll-behavior: smooth;
+}
+body {
+ margin: 0;
+ background:#030303;
+ color: #fff;
+ font-size: 13px;
+ font-family: 'Hiragino Mincho ProN','HiraMinProN-W3','Noto Serif JP',serif;
+ line-height: 1.8;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ text-align: justify;
+ text-shadow: 0 0 5px rgba(255,255,255,.1);
+}
+section {
+ padding: 100px 0;
+}
+section > div {
+ margin: 0 auto;
+ max-width: 900px;
+}
+section > div > div {
+ padding: 0 10px;
+}
+a {
+ color: inherit;
+}
+u {
+ display: inline-block;
+ text-decoration: inherit;
+}
+
+.top-bg {
+ position: absolute; left: 0; top: calc(50vh - 50vmax);
+ width: 100vw;
+ height: 100vmax;
+ background: radial-gradient(circle farthest-side,transparent 30%,#030303), url("ise-kagura.jpg") center center / cover no-repeat;
+ z-index: -1000;
+}
+
+header {
+ width: 100vw;
+ height: 100vh;
+ display: flex;
+ margin: 0 auto;
+ justify-content: center;
+ align-items: center;
+}
+header > div {
+ color: #fff;
+ writing-mode: vertical-rl;
+ font-family: 'GenRyuMin';
+ line-height: 1.5;
+ text-shadow: 0 0 10px #030303;
+}
+header p {
+ margin: 0;
+ font-size: 3vh;
+}
+header h1 {
+ margin: 0 3vh;
+ font-size: 10vh;
+ letter-spacing: .3em;
+}
+header h1 small {
+ font-size: 60%;
+}
+
+
+nav {
+ position: fixed;
+ left: 0; top: 0; right: 0;
+ width: 100%;
+ color: #000;
+ padding: 10px 0;
+ font-size: 15px;
+ background: rgba(255,255,255,.9);
+ text-align: center;
+ opacity: 0;
+ transition: opacity .4s;
+}
+nav.visible {
+ opacity: 1;
+}
+nav p, nav ul, nav li {
+ display: inline-block;
+ margin: 0;
+}
+nav .title {
+ padding: 5px 10px;
+ font-size: 20px;
+}
+nav ul {
+ padding: 0;
+}
+nav li {
+ padding: 0 10px;
+}
+nav a {
+ text-decoration: inherit;
+}
+
+
+#intro {
+ margin: 0 auto;
+ padding: 300px 10px;
+ max-width: 600px;
+ font-size: 15px;
+ line-height: 2;
+}
+
+#about {
+ color: #000;
+ background: linear-gradient(160deg, transparent 5%, #fff 40%), url(kikou08_2.svg) center / 250px;
+}
+#about > div > div {
+ margin: 100px 0 0 auto;
+ max-width: 320px;
+}
+
+
+#coming {
+ text-align: center;
+ background:
+  radial-gradient(circle 250px,
+   rgba(70,0,51,1) 78%, transparent calc(78% + 1px),
+   transparent 84%, rgba(70,0,51,.8) calc(84% + 1px),
+   rgba(70,0,51,.8) 88%, transparent calc(88% + 1px),
+   transparent 92%, rgba(70,0,51,.5) calc(92% + 1px),
+   rgba(70,0,51,.5) 96%, transparent calc(96% + 1px)), #fff;
+}
+#coming .title {
+ margin: 35px 0;
+ font-size: 28px;
+}
+
+
+#past {
+ font-size: 14px;
+ color: #000;
+ background: linear-gradient(290deg,transparent 30px, #fff 500px), url(sakurawari.svg) center / 200px, #fec;
+}
+#past .title {
+ font-size: 20px;
+ margin-top: 50px;
+}
+#past > div > div {
+ max-width: 500px;
+}
+#past > div > div:nth-of-type(2n) {
+ margin: 0 0 0 auto;
+}
+
+
+#credit {
+ background: linear-gradient(180deg, transparent 10px, #030303 250px), url(hukugou02.svg) center / 700px;
+}
+#credit .name {
+ font-size: 24px;
+}
+
+
+footer {
+ padding: 100px 0;
+ font-family: 'Helvetica', 'Arial', sans-serif;
+ font-weight: 200;
+ font-size: 12px;
+ color: #777;
+ text-align: center;
+}
+
+.curtain {
+ position: fixed;
+ left:0; right: 0; bottom: 0; top: 0;
+ width: 100vw;
+ height: 100vh;
+ background: #030303;
+ animation: fadeOut 1.8s both;
+ pointer-events: none;
+}
+@keyframes fadeOut {
+ to { background: transparent; }
+}
+</style>
+
+<header>
+ <div>
+  <p>出雲國の神話・伝承・風土に拠る</p>
+  <h1><small>連作</small> 交響神樂</h1>
+ </div>
+</header>
+
+<div class="top-bg"></div>
+
+<nav id="nav">
+<p class="title"><a href="#">連作交響神樂</a></p>
+<ul>
+<li><a class="into-about" href="#about">交響神樂</a>
+<li><a class="into-coming" href="#coming">次回公演</a>
+<li><a class="into-past" href="#past">楽曲解説</a>
+<li><a class="into-credit" href="#credit">作曲者</a>
+</ul>
+</nav>
+<script>
+// show & hide nav
+var controlNavbar = (function(){
+ var bar = document.getElementById('nav');
+ if (! bar){ return function(){}; }
+ var barClassList = bar.classList;
+ var timer = null;
+ return function(){
+  clearTimeout( timer );
+  timer = setTimeout( function() {
+   if( window.pageYOffset > window.innerHeight / 2 && ! barClassList.contains('visible') ){
+    barClassList.add('visible');
+   } else if( window.pageYOffset < window.innerHeight / 2 && barClassList.contains('visible') ){
+    barClassList.remove('visible');
+   }
+  }, 50 );
+ };
+})();
+
+window.addEventListener('scroll', controlNavbar);
+
+// smooth scroll
+var scroll = new SmoothScroll('a[href*="#"]', {
+  header: '#nav', speed: 100
+});
+</script>
+
+<p id="intro"><ruby>交響<rt>こうきょう</rt>神樂<rt>かぐら</ruby>とは、交響曲と神楽という東西二様の表現の結び目に<ruby>顕<rt>あら</ruby>われる、いわば未来の伝統芸術。出雲國の神話・伝承・風土に基づく、管弦楽（及び声楽）の為の日本流〝我が祖国〟。私達とその風土の<ruby>音声<rt>おんじょう</ruby>を通して、借り物ではない、ほんとうの日本発の交響楽を、未来と世界に放つ。</p>
+
+<section id="about">
+ <div>
+  <div>
+   <p>交響神樂（こうきょうかぐら）についての基本的な説明がここに挿入されます。出雲の神話・伝承および風土に基づく連作の交響楽作品であることや、「出雲の春音楽祭」のための委嘱作品であり毎年新作の初演が行われること、また全6作が構想されていることなど、初めて「交響神樂」という言葉を目にする訪問者への案内文となる記述を想定しています。</p>
+  </div>
+ </div>
+</section>
+
+<section id="coming">
+<div>
+ <div>
+  <p>告</p>
+  <p class="title">第四番〈<ruby>大<rt>オホ</rt>穴牟遅<rt>ナムチ</ruby>〉</p>
+  <p class="title">第五番〈<ruby>鳥遊<rt>トリノアソビ</ruby>〉</p>
+  <p>出雲の春音楽祭 2019〈Vol.2〉初演</p>
+  <p>平成31 (2019) 年3月24日（日）14:30</p>
+  <p><a href="http://izumo-zaidan.jp/tag/news/1080">公演詳細</a></p>
+ </div>
+</div>
+</section>
+
+<section id="past">
+<div>
+ <div>
+  <p class="title">第一番〈<ruby>國引<rt>クニビキ</ruby>〉</p>
+  <p><small>平成29 (2017) 年3月初演</small></p>
+  <p>主人公は原初の英雄、<ruby>八束水臣津野命<rt>ヤツカミヅオミヅヌノミコト</ruby>。大山には弓ヶ浜、三瓶山には長浜と、巨大な綱を国境の霊峰に結わえ、<ruby>志羅紀乃三埼<rt>しらきのみさき</ruby>（韓半島・新羅）を<ruby>支豆支乃御埼<rt>きづきのみさき</ruby>（杵築・日御碕）に、<ruby>佐伎之國<rt>さきのくに</ruby>（隠岐・島前）を<ruby>狭田之國<rt>さだのくに</ruby>（佐太）に、<ruby>良波乃國<rt>よなみのくに</ruby>（隠岐・島後）を<ruby>闇見國<rt>くらみのくに</ruby>（久良彌）に、<ruby>都都乃三埼<rt>つつのみさき</ruby>（能登半島・珠洲）を<ruby>三穂乃埼<rt>みほのさき</ruby>（美保・地蔵崎）に…四つの土地を「くにこくにこ（國来國来）」と引っ張って、劇しくも大らかに出雲國を産み結ぶ。</p>
+ </div>
+ <div>
+  <p class="title">第二番〈<ruby>遠呂智<rt>ヲロチ</ruby>〉</p>
+  <p><small>平成30 (2018) 年3月初演</small></p>
+  <p>出雲神楽・<ruby>石見<rt>いわみ</ruby>神楽をはじめ様々な形で誰もが知る、あの<ruby>八俣遠呂智<rt>ヤマタノヲロチ</ruby>（八岐大蛇）の物語。<ruby>流離<rt>さすらい</ruby>の英雄が里人を苦しめる八頭一体の巨龍を退治、その尾に隠れた宝剣を奪って天に献上、助けた姫を<ruby>娶<rt>めと</ruby>って目出度し。「八雲立つ出雲八重垣妻籠みに八重垣作るその八重垣を」——古事記・日本書紀に描かれて風土記にはついぞ現れぬ、<ruby>須佐之男<rt>スサノヲ</ruby>（素戔嗚）様の大手柄。</p>
+ </div>
+ <div>
+  <p class="title">第三番〈<ruby>羅摩船<rt>カガミノフネ</ruby>〉</p>
+  <p><small>平成30 (2018) 年3月初演</small></p>
+  <p>天の神様の指の間から<ruby>零<rt>こぼ</ruby>れ落ち、蛾の羽で編んだ船ぎ海わたって本邦に到着。オオナムヂの神と一緒に国作りの大事を成した後、<ruby>粟穂<rt>あわほ</ruby>に弾かれ呆気なく<ruby>常世<rt>とこよ</ruby>の国へ飛び去ったという、虫子の如く小さな神＝スクナビコナの物語。一見可愛らしいけれど、よく見れば不思議に満ちた神の姿と足跡を、民俗の<ruby>淵<rt>ふち</ruby>に探り、人の子らが噂するヒソヒソ話に忍び込んで、わらべうたの心に映しました。</p>
+ </div>
+</div>
+</section>
+
+<section id="credit">
+ <div>
+  <div>
+   <p class="name"><small>作曲</small> 平野一郎</p>
+   <p>1974年京都府宮津市出身。95年吹田音楽コンクール作曲部門第2位（最上位）。96年より各地の祭礼と音楽を巡る踏査を始動。97年京都市立芸術大学卒業。99年ブレーメン芸術大学に派遣留学。2000年京都芸大大学院（修士課程）修了。01年より作曲活動を本格開始、京都を拠点に日本の風土や伝承に根差した独自の作品を発表。02年京都市音楽芸術文化振興財団〝小倉理三郎音楽奨学金〟を受ける。05年「かぎろひの島」（Orch）で日本交響楽振興財団作曲賞最上位入選・日本財団特別奨励賞受賞。05-06年〝石豊久（チェロ）＆堤聡子（ピアノ）デュオコンサート〟企画監修。07年作品演奏会〝作曲家 平野一郎の世界 〜神話・伝説・祭礼…音の原風景を巡る旅〜〟で第17回青山音楽賞受賞。07年度京都市芸術新人賞受賞。07年より古典と新作による演奏会シリーズ〝CROSSING 衢 PROJECT〟始動。無伴奏チェロ曲「夢祀（ユメノマツリ）」で〝ISCM世界音楽の日々2008ヴィリニュス大会〟入選・参加。11年演奏家・美術家と〈音色工房（オンショクコウボウ）〉を結成、〝女声と映像、15楽器によるモノオペラ「邪宗門」〜南蛮憧憬（オクシデンタリズム）の彼岸へ〜〟を作曲・初演。12年ギャラリーリサイタル〝花影の小径 〜堤聡子（ピアノ）＆才村昌子（銅版画）の世界〜〟企画監修。13年歌曲「海の幸／天平の面影」で第30回現音作曲新人賞にて富樫賞・聴衆賞受賞。細川忠興公・ガラシャ夫人生誕450年記念演奏会〝祈りのガラシャ〟監修。その他10年「八幡縁起（ハチマンエンギ）」(Orch/京都府八幡市)、「鱗宮（イロコノミヤ）交響曲」(Orch/芦屋交響楽団)、11年「いそぽのふゎぶらす」(狂言+WQ/ザ・フェニックスホール)、「精霊の海」（Vn+Pf/舘野泉・左手の文庫）、12年「微笑ノ樹（ほほえみのき）」（Pf/同前）、14年二重協奏曲「星巡ノ夜（ほしめぐりのよる）」（Vn+Pf+Orch/同前）等、委嘱作品を多数手掛ける。
+
+「平野の作品は、現実と幻想、現代と太古を融け合わせ、忘れられた伝説や異界の音風景を今に蘇らせつつ、多彩な音楽世界を拓いている。」（マヌエラ・アントニウ）
+
+廣瀬量平、中村典子、内田勝人、北爪道夫、前田守一、藤島昌壽、藤井園子、ジルベール・アミ、フランコ・ドナトーニ、ヨンギ・パク＝パーンの各師に師事。</p>
+   
+  </div>
+ </div>
+</section>
+
+<footer>
+ <p>©2019 団体名</p>
+</footer>
+
+
+<div class="curtain"></div>
