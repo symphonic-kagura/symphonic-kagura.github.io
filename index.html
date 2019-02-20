@@ -219,20 +219,20 @@ footer li:not(:first-child) {
  width: 100vw;
  height: 100vh;
  background: #030303;
- user-select: none;
- opacity: 1;
- transition: opacity 1.8s .5s;
  text-align: center;
  font-family: 'Helvetica', 'Arial', sans-serif;
  font-weight: 200;
+ opacity: 1;
+ filter: opacity(1);
+ transition: opacity 1.8s .5s;
+ user-select: none;
 }
 #curtain.hidden {
- pointer-events: none;
  opacity: 0;
+ pointer-events: none;
 }
 @supports (filter: opacity(0)){
  #curtain {
-  filter: opacity(1);
   transition: filter 1.8s .5s;
  }
  #curtain.hidden {
@@ -338,36 +338,36 @@ var scroll = new SmoothScroll('a[href*="#"]', {
 </section>
 
 <section id="coming">
-<div>
  <div>
-  <p>告</p>
-  <p class="title">第四番〈<ruby>大<rt>オホ</rt>穴牟遅<rt>ナムチ</ruby>〉</p>
-  <p class="title">第五番〈<ruby>鳥遊<rt>トリノアソビ</ruby>〉</p>
-  <p>出雲の春音楽祭 2019〈Vol.2〉初演</p>
-  <p>平成31 (2019) 年3月24日（日）14:30</p>
-  <p><a href="http://izumo-zaidan.jp/tag/news/1080">公演詳細</a></p>
+  <div>
+   <p>告</p>
+   <p class="title">第四番〈<ruby>大<rt>オホ</rt>穴牟遅<rt>ナムチ</ruby>〉</p>
+   <p class="title">第五番〈<ruby>鳥遊<rt>トリノアソビ</ruby>〉</p>
+   <p>出雲の春音楽祭 2019〈Vol.2〉初演</p>
+   <p>平成31 (2019) 年3月24日（日）14:30</p>
+   <p><a href="http://izumo-zaidan.jp/tag/news/1080">公演詳細</a></p>
+  </div>
  </div>
-</div>
 </section>
 
 <section id="past">
-<div>
  <div>
-  <p class="title">第一番〈<ruby>國引<rt>クニビキ</ruby>〉</p>
-  <p><small>平成29 (2017) 年3月初演</small></p>
-  <p>主人公は原初の英雄、<ruby>八束水臣津野命<rt>ヤツカミヅオミヅヌノミコト</ruby>。大山には弓ヶ浜、三瓶山には長浜と、巨大な綱を国境の霊峰に結わえ、<ruby>志羅紀乃三埼<rt>しらきのみさき</ruby>（韓半島・新羅）を<ruby>支豆支乃御埼<rt>きづきのみさき</ruby>（杵築・日御碕）に、<ruby>佐伎之國<rt>さきのくに</ruby>（隠岐・島前）を<ruby>狭田之國<rt>さだのくに</ruby>（佐太）に、<ruby>良波乃國<rt>よなみのくに</ruby>（隠岐・島後）を<ruby>闇見國<rt>くらみのくに</ruby>（久良彌）に、<ruby>都都乃三埼<rt>つつのみさき</ruby>（能登半島・珠洲）を<ruby>三穂乃埼<rt>みほのさき</ruby>（美保・地蔵崎）に…四つの土地を「くにこくにこ（國来國来）」と引っ張って、劇しくも大らかに出雲國を産み結ぶ。</p>
+  <div>
+   <p class="title">第一番〈<ruby>國引<rt>クニビキ</ruby>〉</p>
+   <p><small>平成29 (2017) 年3月初演</small></p>
+   <p>主人公は原初の英雄、<ruby>八束水臣津野命<rt>ヤツカミヅオミヅヌノミコト</ruby>。大山には弓ヶ浜、三瓶山には長浜と、巨大な綱を国境の霊峰に結わえ、<ruby>志羅紀乃三埼<rt>しらきのみさき</ruby>（韓半島・新羅）を<ruby>支豆支乃御埼<rt>きづきのみさき</ruby>（杵築・日御碕）に、<ruby>佐伎之國<rt>さきのくに</ruby>（隠岐・島前）を<ruby>狭田之國<rt>さだのくに</ruby>（佐太）に、<ruby>良波乃國<rt>よなみのくに</ruby>（隠岐・島後）を<ruby>闇見國<rt>くらみのくに</ruby>（久良彌）に、<ruby>都都乃三埼<rt>つつのみさき</ruby>（能登半島・珠洲）を<ruby>三穂乃埼<rt>みほのさき</ruby>（美保・地蔵崎）に…四つの土地を「くにこくにこ（國来國来）」と引っ張って、劇しくも大らかに出雲國を産み結ぶ。</p>
+  </div>
+  <div>
+   <p class="title">第二番〈<ruby>遠呂智<rt>ヲロチ</ruby>〉</p>
+   <p><small>平成30 (2018) 年3月初演</small></p>
+   <p>出雲神楽・<ruby>石見<rt>いわみ</ruby>神楽をはじめ様々な形で誰もが知る、あの<ruby>八俣遠呂智<rt>ヤマタノヲロチ</ruby>（八岐大蛇）の物語。<ruby>流離<rt>さすらい</ruby>の英雄が里人を苦しめる八頭一体の巨龍を退治、その尾に隠れた宝剣を奪って天に献上、助けた姫を<ruby>娶<rt>めと</ruby>って目出度し。「八雲立つ出雲八重垣妻籠みに八重垣作るその八重垣を」——古事記・日本書紀に描かれて風土記にはついぞ現れぬ、<ruby>須佐之男<rt>スサノヲ</ruby>（素戔嗚）様の大手柄。</p>
+  </div>
+  <div>
+   <p class="title">第三番〈<ruby>羅摩船<rt>カガミノフネ</ruby>〉</p>
+   <p><small>平成30 (2018) 年3月初演</small></p>
+   <p>天の神様の指の間から<ruby>零<rt>こぼ</ruby>れ落ち、蛾の羽で編んだ船ぎ海わたって本邦に到着。オオナムヂの神と一緒に国作りの大事を成した後、<ruby>粟穂<rt>あわほ</ruby>に弾かれ呆気なく<ruby>常世<rt>とこよ</ruby>の国へ飛び去ったという、虫子の如く小さな神＝スクナビコナの物語。一見可愛らしいけれど、よく見れば不思議に満ちた神の姿と足跡を、民俗の<ruby>淵<rt>ふち</ruby>に探り、人の子らが噂するヒソヒソ話に忍び込んで、わらべうたの心に映しました。</p>
+  </div>
  </div>
- <div>
-  <p class="title">第二番〈<ruby>遠呂智<rt>ヲロチ</ruby>〉</p>
-  <p><small>平成30 (2018) 年3月初演</small></p>
-  <p>出雲神楽・<ruby>石見<rt>いわみ</ruby>神楽をはじめ様々な形で誰もが知る、あの<ruby>八俣遠呂智<rt>ヤマタノヲロチ</ruby>（八岐大蛇）の物語。<ruby>流離<rt>さすらい</ruby>の英雄が里人を苦しめる八頭一体の巨龍を退治、その尾に隠れた宝剣を奪って天に献上、助けた姫を<ruby>娶<rt>めと</ruby>って目出度し。「八雲立つ出雲八重垣妻籠みに八重垣作るその八重垣を」——古事記・日本書紀に描かれて風土記にはついぞ現れぬ、<ruby>須佐之男<rt>スサノヲ</ruby>（素戔嗚）様の大手柄。</p>
- </div>
- <div>
-  <p class="title">第三番〈<ruby>羅摩船<rt>カガミノフネ</ruby>〉</p>
-  <p><small>平成30 (2018) 年3月初演</small></p>
-  <p>天の神様の指の間から<ruby>零<rt>こぼ</ruby>れ落ち、蛾の羽で編んだ船ぎ海わたって本邦に到着。オオナムヂの神と一緒に国作りの大事を成した後、<ruby>粟穂<rt>あわほ</ruby>に弾かれ呆気なく<ruby>常世<rt>とこよ</ruby>の国へ飛び去ったという、虫子の如く小さな神＝スクナビコナの物語。一見可愛らしいけれど、よく見れば不思議に満ちた神の姿と足跡を、民俗の<ruby>淵<rt>ふち</ruby>に探り、人の子らが噂するヒソヒソ話に忍び込んで、わらべうたの心に映しました。</p>
- </div>
-</div>
 </section>
 
 <section id="credit">
