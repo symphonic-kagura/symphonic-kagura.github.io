@@ -223,7 +223,6 @@ footer li:not(:first-child) {
  font-family: 'Helvetica', 'Arial', sans-serif;
  font-weight: 200;
  opacity: 1;
- filter: opacity(1);
  transition: opacity 1.8s .5s;
  user-select: none;
 }
@@ -231,25 +230,16 @@ footer li:not(:first-child) {
  opacity: 0;
  pointer-events: none;
 }
-@supports (filter: opacity(0)){
- #curtain {
-  transition: filter 1.8s .5s;
- }
- #curtain.hidden {
-  filter: opacity(0);
-  opacity: 1;
- }
-}
 #curtain figure {
  position: absolute;
  left:0; right: 0; top: 0; bottom: 0; margin: auto;
  width: 50vw; max-width: 300px;
  height: 50vh;
- filter: opacity(0);
+ opacity: 0;
  animation: appear .5s .3s both;
 }
 @keyframes appear {
- to { filter: opacity(1); }
+ to { opacity: 1; }
 }
 #curtain.hidden figure {
  display: none; /* no transition */
@@ -264,12 +254,12 @@ footer li:not(:first-child) {
 }
 @keyframes load {
  0% {
-  transform: scale(1);
-  filter: opacity(.5);
+  transform: scale(.7);
+  opacity: .5;
  }
  100% {
-  transform: scale(1.3);
-  filter: opacity(1);
+  transform: scale(1);
+  opacity: 1;
  }
 }
 #curtain figcaption {
