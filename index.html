@@ -49,9 +49,13 @@ u {
 }
 
 .top-bg {
- position: absolute; left: 0; top: calc(50vh - 50vmax);
+ position: absolute;
+ left: 0;
+ top: calc(50vh - 50vw);   /* for IE */
+ top: calc(50vh - 50vmax); /* for others */
  width: 100vw;
- height: 100vmax;
+ height: 100vw;   /* for IE */
+ height: 100vmax; /* for others */
  background: radial-gradient(circle farthest-side,transparent 30%,#030303), url("ise-kagura.jpg") center center / cover no-repeat;
  z-index: -1000;
 }
@@ -66,7 +70,8 @@ header {
 }
 header > div {
  color: #fff;
- writing-mode: vertical-rl;
+ -ms-writing-mode: tb-rl;   /* for IE */
+ writing-mode: vertical-rl; /* for others */
  font-family: 'GenRyuMin', serif;
  line-height: 1.5;
  text-shadow: 0 0 10px #030303;
