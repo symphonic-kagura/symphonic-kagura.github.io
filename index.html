@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1.0">
 <title>《連作交響神樂》</title>
-<script src="smooth-scroll.js"></script>
+<script src="smooth-scroll.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
 <style>
 
@@ -16,7 +16,7 @@
  box-sizing: border-box;
 }
 html {
- scroll-behavior: smooth;
+ /* scroll-behavior: smooth; */ /* for future */
 }
 body {
  margin: 0;
@@ -288,38 +288,34 @@ footer li:not(:first-child) {
  <div>
   <p class="title"><a href="#">連作交響神樂</a></p>
   <ul>
-   <li><a class="into-about" href="#about">交響神樂</a>
-   <li><a class="into-coming" href="#coming">次回公演</a>
-   <li><a class="into-past" href="#past">楽曲解説</a>
-   <li><a class="into-credit" href="#credit">作曲者</a>
+   <li><a href="#about">交響神樂</a>
+   <li><a href="#coming">次回公演</a>
+   <li><a href="#past">楽曲解説</a>
+   <li><a href="#credit">作曲者</a>
   </ul>
  </div>
 </nav>
 <script>
 // show & hide nav
-var controlNavbar = (function(){
- var bar = document.getElementById('nav');
- if (! bar){ return function(){}; }
- var barClassList = bar.classList;
+var toggleNavDisplay = (function(){
+ var nav = document.getElementById('nav');
+ if (! nav){ return function(){}; }
+ var navClass = nav.classList;
  var timer = null;
  return function(){
   clearTimeout( timer );
   timer = setTimeout( function() {
-   if( window.pageYOffset > window.innerHeight / 2 && ! barClassList.contains('visible') ){
-    barClassList.add('visible');
-   } else if( window.pageYOffset < window.innerHeight / 2 && barClassList.contains('visible') ){
-    barClassList.remove('visible');
+   if( window.pageYOffset > window.innerHeight / 2 && ! navClass.contains('visible') ){
+    navClass.add('visible');
+   } else if( window.pageYOffset < window.innerHeight / 2 && navClass.contains('visible') ){
+    navClass.remove('visible');
    }
   }, 50 );
  };
 })();
+window.addEventListener('scroll', toggleNavDisplay);
 
-window.addEventListener('scroll', controlNavbar);
-
-// smooth scroll
-var scroll = new SmoothScroll('a[href*="#"]', {
-  header: '#nav', speed: 200
-});
+var scroll = new SmoothScroll('a[href*="#"]', { header: '#nav', speed: 500 });
 </script>
 
 <p id="intro"><ruby>交響<rt>こうきょう</rt>神樂<rt>かぐら</ruby>とは、交響曲と神楽という東西二様の表現の結び目に<ruby>顕<rt>あら</ruby>われる、いわば未来の伝統芸術。出雲國の神話・伝承・風土に基づく、管弦楽（及び声楽）の為の日本流〝我が祖国〟。私達とその風土の<ruby>音声<rt>おんじょう</ruby>を通して、借り物ではない、ほんとうの日本発の交響楽を、未来と世界に放つ。</p>
