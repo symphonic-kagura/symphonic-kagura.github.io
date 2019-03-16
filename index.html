@@ -102,6 +102,7 @@ nav {
  font-size: 14.5px;
  opacity: 0;
  transition: opacity .4s;
+ z-index: 1000;
 }
 nav.visible {
  opacity: 1;
@@ -137,8 +138,19 @@ nav a {
 
 
 #intro {
- margin: 0 auto;
- padding: 300px 10px;
+ margin-top: 300px;
+ padding-bottom: 300px;
+ background:
+  linear-gradient(#030303, transparent calc(100% - 200px), #fff),
+  url(swirl_01-compressor.jpg) center / 1200px no-repeat;
+}
+@media screen and (min-width: 1200px) {
+ #intro {
+  background-size: 100%;
+ }
+}
+
+#intro > div {
  max-width: 600px;
  font-size: 15px;
  line-height: 2;
@@ -146,23 +158,24 @@ nav a {
 
 #about {
  color: #000;
- background: linear-gradient(160deg, transparent 5%, #fff 40%), url(kikou08_2.svg) center / 250px;
+ background: #fff;
 }
 #about > div > div {
  margin: 100px 0 0 auto;
  max-width: 400px;
 }
 
-
 #coming {
  text-align: center;
  background:
   radial-gradient(circle 250px,
-   rgba(70,0,51,1) 78%, transparent calc(78% + 1px),
-   transparent 84%, rgba(70,0,51,.8) calc(84% + 1px),
-   rgba(70,0,51,.8) 88%, transparent calc(88% + 1px),
-   transparent 92%, rgba(70,0,51,.5) calc(92% + 1px),
-   rgba(70,0,51,.5) 96%, transparent calc(96% + 1px)), #fff;
+   #787059 82%, #fff calc(82% + 1px),
+   #fff 84%, rgba(255,255,255,.2) calc(84% + 1px),
+   rgba(255,255,255,.2) 90%, #fff calc(90% + 1px),
+   #fff 92%, rgba(255,255,255,.5) calc(92% + 1px),
+   rgba(255,255,255,.5) 98%, #fff calc(98% + 1px)),
+  url(circle_02-compressor.jpg) center center / 500px no-repeat;
+ filter: saturate(6) hue-rotate(-34deg);
 }
 #coming .title {
  margin: 35px 0;
@@ -170,26 +183,38 @@ nav a {
 }
 
 
-#past {
+#commentary {
  font-size: 15px;
  color: #000;
- background: linear-gradient(290deg,transparent 30px, #fff 500px), url(sakurawari.svg) center / 200px, #fec;
+ background: linear-gradient(#fff, rgba(255,255,255,.8), #fff),
+  url(swirl_03r-compressor.jpg) center / 1500px;
 }
-#past .title {
+@media screen and (min-width: 1500px) {
+ #commentary {
+  background-size: 100%;
+ }
+}
+#commentary .title {
  font-size: 20px;
  margin-top: 50px;
 }
-#past > div > div {
+#commentary > div > div {
  max-width: 500px;
 }
-#past > div > div:nth-of-type(2n) {
+#commentary > div > div:nth-of-type(2n) {
  margin: 0 0 0 auto;
 }
 
 
 #credit {
- background: linear-gradient(180deg, transparent 10px, #030303 150px), url(hukugou02.svg) center / 700px;
+ background: linear-gradient(transparent 10px, #030303 150px), url(triangle_01-compressor.jpg) center top / 1500px;
 }
+@media screen and (min-width: 1500px) {
+ #credit {
+  background-size: 100%;
+ }
+}
+
 #credit .name {
  font-size: 24px;
 }
@@ -290,7 +315,7 @@ footer li:not(:first-child) {
   <ul>
    <li><a href="#about">交響神樂</a>
    <li><a href="#coming">次回公演</a>
-   <li><a href="#past">楽曲解説</a>
+   <li><a href="#commentary">楽曲解説</a>
    <li><a href="#credit">作曲者</a>
   </ul>
  </div>
@@ -318,7 +343,13 @@ window.addEventListener('scroll', toggleNavDisplay);
 var scroll = new SmoothScroll('a[href*="#"]');
 </script>
 
-<p id="intro"><ruby>交響<rt>こうきょう</rt>神樂<rt>かぐら</ruby>とは、交響曲と神楽という東西二様の表現の結び目に<ruby>顕<rt>あら</ruby>われる、いわば未来の伝統芸術。出雲國の神話・伝承・風土に基づく、管弦楽（及び声楽）の為の日本流〝我が祖国〟。私達とその風土の<ruby>音声<rt>おんじょう</ruby>を通して、借り物ではない、ほんとうの日本発の交響楽を、未来と世界に放つ。</p>
+<section id="intro">
+ <div>
+  <div>
+   <p><ruby>交響<rt>こうきょう</rt>神樂<rt>かぐら</ruby>とは、交響曲と神楽という東西二様の表現の結び目に<ruby>顕<rt>あら</ruby>われる、いわば未来の伝統芸術。出雲國の神話・伝承・風土に基づく、管弦楽（及び声楽）の為の日本流〝我が祖国〟。私達とその風土の<ruby>音声<rt>おんじょう</ruby>を通して、借り物ではない、ほんとうの日本発の交響楽を、未来と世界に放つ。</p>
+  </div>
+ </div>
+</section>
 
 <section id="about">
  <div>
@@ -341,7 +372,7 @@ var scroll = new SmoothScroll('a[href*="#"]');
  </div>
 </section>
 
-<section id="past">
+<section id="commentary">
  <div>
   <div>
    <p class="title">第一番〈<ruby>國引<rt>クニビキ</ruby>〉</p>
@@ -379,7 +410,6 @@ var scroll = new SmoothScroll('a[href*="#"]');
  <div>
   <ul class="resources">
    <li>題字：<a href="https://github.com/ButTaiwan/genryu-font">源流明朝</a>
-   <li>文様：<a href="http://www.ikiya.jp/">粋屋</a>
   </ul>
  <p>©2019 団体名</p>
  </div>
