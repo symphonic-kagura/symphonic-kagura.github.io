@@ -92,7 +92,6 @@ header h1 small {
  font-size: 60%;
 }
 
-
 nav {
  position: fixed;
  left: 0; top: 0; right: 0;
@@ -136,7 +135,6 @@ nav li {
 nav a {
  text-decoration: inherit;
 }
-
 
 #intro {
  margin-top: 300px;
@@ -294,6 +292,16 @@ footer li:not(:first-child) {
 #curtain figcaption::after {
  content: "loading..."; /* seo */
 }
+
+.fadein {
+ opacity: 0;
+ transform: translate(0,50px);
+ transition: all 1s;
+}
+.fadein.visible {
+ opacity: 1;
+ transform: translate(0);
+}
 </style>
 
 <header>
@@ -317,7 +325,7 @@ footer li:not(:first-child) {
  </div>
 </nav>
 <script>
-// show & hide nav
+/* show & hide nav */
 var toggleNavDisplay = (function(){
  var nav = document.getElementById('nav');
  if (! nav){ return function(){}; }
@@ -341,7 +349,7 @@ var scroll = new SmoothScroll('a[href*="#"]');
 
 <section id="intro">
  <div>
-  <div>
+  <div class="fadein">
    <p><ruby>交響<rt>こうきょう</rt>神樂<rt>かぐら</ruby>とは、交響曲と神楽という東西二様の表現の結び目に<ruby>顕<rt>あら</ruby>われる、いわば未来の伝統芸術。出雲國の神話・伝承・風土に基づく、管弦楽（及び声楽）の為の日本流〝我が祖国〟。私達とその風土の<ruby>音声<rt>おんじょう</ruby>を通して、借り物ではない、ほんとうの日本発の交響楽を、未来と世界に放つ。</p>
   </div>
  </div>
@@ -349,7 +357,7 @@ var scroll = new SmoothScroll('a[href*="#"]');
 
 <section id="about">
  <div>
-  <div>
+  <div class="fadein">
    <p>交響神樂（こうきょうかぐら）についての基本的な説明がここに挿入されます。出雲の神話・伝承および風土に基づく連作の交響楽作品であることや、「出雲の春音楽祭」のための委嘱作品であり毎年新作の初演が行われること、また全6作が構想されていることなど、初めて「交響神樂」という言葉を目にする訪問者への案内文となる記述を想定しています。</p>
   </div>
  </div>
@@ -425,4 +433,25 @@ window.addEventListener("load",function(){
  clearTimeout(t);
  d.classList.add("hidden");
  setTimeout(function(){d.style.display = "none"}, 4000);
-})</script>
+});
+</script>
+<script>
+/* fade-in elements */
+var scrollFadeIn = (function(){
+ var f = document.getElementsByClassName("fadein");
+ if ( !f ){ return function(){}; }
+ return function(){
+  var scrollTop = document.scrollingElement.scrollTop;
+  for ( var i = 0; i < f.length; i++ ){
+   if ( scrollTop > f[i].offsetTop - window.innerHeight + 200 && !f[i].classList.contains('visible') ){
+    f[i].classList.add('visible');
+   }
+  }
+ };
+})();
+window.addEventListener('scroll', scrollFadeIn);
+
+window.addEventListener("scroll",function(){
+ 
+});
+</script>
